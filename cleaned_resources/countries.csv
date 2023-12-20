@@ -1,0 +1,215 @@
+,country,population,capital,region,continent
+0,Afghanistan,26023100.0,Kabul,Southern and Central Asia,Asia
+1,Albania,2895947.0,Tirana,Southern Europe,Europe
+2,Algeria,38700000.0,Algiers,Northern Africa,Africa
+3,American Samoa,55519.0,Pago Pago,Polynesia,Oceania
+4,Angola,24383301.0,Luanda,Central Africa,Africa
+5,Anguilla,13452.0,The Valley,Caribbean,North America
+6,Antigua and Barbuda,86295.0,Saint John's,Caribbean,North America
+7,Argentina,42669500.0,Buenos Aires,South America,South America
+8,Armenia,3009800.0,Yerevan,Middle East,Asia
+9,Aruba,101484.0,Oranjestad,Caribbean,North America
+10,Australia,,Canberra,Australia and New Zealand,Oceania
+11,Austria,8527230.0,Vienna,Western Europe,Europe
+12,Azerbaijan,9552500.0,Baku,Middle East,Asia
+13,Bahrain,1316500.0,Manama,Middle East,Asia
+14,Bangladesh,157486000.0,Dhaka,Southern and Central Asia,Asia
+15,Belarus,9475100.0,Minsk,Eastern Europe,Europe
+16,Belgium,11225469.0,Brussels,Western Europe,Europe
+17,Belize,349728.0,Belmopan,Central America,North America
+18,Benin,9988068.0,Porto-Novo,Western Africa,Africa
+19,Bermuda,64237.0,Hamilton,North America,North America
+20,Bhutan,755030.0,Thimphu,Southern and Central Asia,Asia
+21,Bolivia,10027254.0,Sucre,South America,South America
+22,Bosnia and Herzegovina,3791622.0,Sarajevo,Southern Europe,Europe
+23,Botswana,2024904.0,Gaborone,Southern Africa,Africa
+24,Brazil,203586000.0,Brasília,South America,South America
+25,Brunei,393372.0,Bandar Seri Begawan,Southeast Asia,Asia
+26,Bulgaria,7245677.0,Sofia,Eastern Europe,Europe
+27,Burkina Faso,17322796.0,Ouagadougou,Western Africa,Africa
+28,Burundi,9530434.0,Bujumbura,Eastern Africa,Africa
+29,Cambodia,15184116.0,Phnom Penh,Southeast Asia,Asia
+30,Cameroon,20386799.0,Yaoundé,Central Africa,Africa
+31,Canada,35540419.0,Ottawa,North America,North America
+32,Cape Verde,518467.0,Praia,Western Africa,Africa
+33,Cayman Islands,55456.0,George Town,Caribbean,North America
+34,Central African Republic,4709000.0,Bangui,Central Africa,Africa
+35,Chad,13211000.0,N'Djamena,Central Africa,Africa
+36,Chile,17819054.0,Santiago,South America,South America
+37,China,1367110000.0,Beijing,Eastern Asia,Asia
+38,Christmas Island,2072.0,Flying Fish Cove,Australia and New Zealand,Oceania
+39,Colombia,47907800.0,Bogotá,South America,South America
+40,Comoros,763952.0,Moroni,Eastern Africa,Africa
+41,Cook Islands,14974.0,Avarua,Polynesia,Oceania
+42,Costa Rica,4713168.0,San José,Central America,North America
+43,Croatia,4267558.0,Zagreb,Southern Europe,Europe
+44,Cuba,11210064.0,Havana,Caribbean,North America
+45,Cyprus,858000.0,Nicosia,Middle East,Asia
+46,Czech Republic,10521600.0,Prague,Eastern Europe,Europe
+47,Democratic Republic of the Congo,69360000.0,Kinshasa,,
+48,Denmark,5655750.0,Copenhagen,Nordic Countries,Europe
+49,Djibouti,886000.0,Djibouti,Eastern Africa,Africa
+50,Dominica,71293.0,Roseau,Caribbean,North America
+51,Dominican Republic,10378267.0,Santo Domingo,Caribbean,North America
+52,East Timor,1172390.0,Dili,Southeast Asia,Asia
+53,Ecuador,15888900.0,Quito,South America,South America
+54,Egypt,87668100.0,Cairo,Northern Africa,Africa
+55,El Salvador,6401240.0,San Salvador,Central America,North America
+56,Equatorial Guinea,1430000.0,Malabo,Central Africa,Africa
+57,Estonia,1315819.0,Tallinn,Baltic Countries,Europe
+58,Ethiopia,87952991.0,Addis Ababa,Eastern Africa,Africa
+59,Falkland Islands,3000.0,Stanley,South America,South America
+60,Fiji,859178.0,Suva,Melanesia,Oceania
+61,Finland,5470437.0,Helsinki,Nordic Countries,Europe
+62,France,66078000.0,Paris,Western Europe,Europe
+63,French Guiana,237549.0,Cayenne,South America,South America
+64,French Polynesia,268270.0,Papeetē,Polynesia,Oceania
+65,French Southern and Antarctic Lands,140.0,Port-aux-Français,Antarctica,Antarctica
+66,Gabon,,Libreville,Central Africa,Africa
+67,Georgia,4490500.0,Tbilisi,Middle East,Asia
+68,Germany,80783000.0,Berlin,Western Europe,Europe
+69,Ghana,27043093.0,Accra,Western Africa,Africa
+70,Gibraltar,30001.0,Gibraltar,,
+71,Greece,,Athens,Southern Europe,Europe
+72,Greenland,56295.0,Nuuk,North America,North America
+73,Grenada,103328.0,St. George's,Caribbean,North America
+74,Guam,159358.0,Hagåtña,Micronesia,Oceania
+75,Guatemala,15806675.0,Guatemala City,Central America,North America
+76,Guernsey,63085.0,St. Peter Port,,
+77,Guinea,10628972.0,Conakry,Western Africa,Africa
+78,Guinea-Bissau,1746000.0,Bissau,Western Africa,Africa
+79,Guyana,784894.0,Georgetown,South America,South America
+80,Haiti,10745665.0,Port-au-Prince,Caribbean,North America
+81,Honduras,8725111.0,Tegucigalpa,Central America,North America
+82,Hong Kong,7234800.0,City of Victoria,Eastern Asia,Asia
+83,Hungary,9879000.0,Budapest,Eastern Europe,Europe
+84,Iceland,328170.0,Reykjavik,Nordic Countries,Europe
+85,India,1263930000.0,New Delhi,Southern and Central Asia,Asia
+86,Indonesia,252164800.0,Jakarta,Southeast Asia,Asia
+87,Iran,77966400.0,Tehran,Southern and Central Asia,Asia
+88,Iraq,36004552.0,Baghdad,Middle East,Asia
+89,Ireland,6378000.0,Dublin,British Isles,Europe
+90,Isle of Man,84497.0,Douglas,,
+91,Israel,8268400.0,Jerusalem,Middle East,Asia
+92,Italy,60769102.0,Rome,Southern Europe,Europe
+93,Ivory Coast,23821000.0,Yamoussoukro,,
+94,Jamaica,2717991.0,Kingston,Caribbean,North America
+95,Japan,127080000.0,Tokyo,Eastern Asia,Asia
+96,Jersey,99000.0,Saint Helier,,
+97,Jordan,6666960.0,Amman,Middle East,Asia
+98,Kazakhstan,17377800.0,Astana,Southern and Central Asia,Asia
+99,Kenya,41800000.0,Nairobi,Eastern Africa,Africa
+100,Kiribati,106461.0,South Tarawa,Micronesia,Oceania
+101,Kuwait,3268431.0,Kuwait City,Middle East,Asia
+102,Kyrgyzstan,5776570.0,Bishkek,Southern and Central Asia,Asia
+103,Laos,6693300.0,Vientiane,Southeast Asia,Asia
+104,Latvia,1991800.0,Riga,Baltic Countries,Europe
+105,Lebanon,4104000.0,Beirut,Middle East,Asia
+106,Lesotho,2098000.0,Maseru,Southern Africa,Africa
+107,Liberia,4397000.0,Monrovia,Western Africa,Africa
+108,Libya,6253000.0,Tripoli,Northern Africa,Africa
+109,Liechtenstein,37132.0,Vaduz,Western Europe,Europe
+110,Lithuania,2927310.0,Vilnius,Baltic Countries,Europe
+111,Luxembourg,549700.0,Luxembourg,Western Europe,Europe
+112,Macau,631000.0,,Eastern Asia,Asia
+113,Macedonia,2058539.0,Skopje,Southern Europe,Europe
+114,Madagascar,21842167.0,Antananarivo,Eastern Africa,Africa
+115,Malawi,15805239.0,Lilongwe,Eastern Africa,Africa
+116,Malaysia,30430500.0,Kuala Lumpur,Southeast Asia,Asia
+117,Maldives,341256.0,Malé,Southern and Central Asia,Asia
+118,Mali,15768000.0,Bamako,Western Africa,Africa
+119,Malta,416055.0,Valletta,Southern Europe,Europe
+120,Marshall Islands,56086.0,Majuro,Micronesia,Oceania
+121,Mauritania,3545620.0,Nouakchott,Western Africa,Africa
+122,Mauritius,1261208.0,Port Louis,Eastern Africa,Africa
+123,Mayotte,212645.0,Mamoudzou,Eastern Africa,Africa
+124,Mexico,119713203.0,Mexico City,Central America,North America
+125,Moldova,3557600.0,Chișinău,Eastern Europe,Europe
+126,Monaco,36950.0,Monaco,Western Europe,Europe
+127,Mongolia,2987733.0,Ulan Bator,Eastern Asia,Asia
+128,Montserrat,4922.0,Plymouth,Caribbean,Europe
+129,Morocco,33465000.0,Rabat,Northern Africa,North America
+130,Mozambique,25041922.0,Maputo,Eastern Africa,Africa
+131,Namibia,2113077.0,Windhoek,Southern Africa,Africa
+132,Nepal,27646053.0,Kathmandu,Southern and Central Asia,Asia
+133,Netherlands,16881000.0,Amsterdam,Western Europe,Europe
+134,New Zealand,4547900.0,Wellington,Australia and New Zealand,Oceania
+135,Nicaragua,6134270.0,Managua,Central America,North America
+136,Niger,17138707.0,Niamey,Western Africa,Africa
+137,Nigeria,178517000.0,Abuja,Western Africa,Africa
+138,Norfolk Island,2302.0,Kingston,Australia and New Zealand,Oceania
+139,North Korea,25027000.0,Pyongyang,Eastern Asia,Asia
+140,Northern Mariana Islands,53883.0,Saipan,Micronesia,Oceania
+141,Norway,5156450.0,Oslo,Nordic Countries,Europe
+142,Oman,4089076.0,Muscat,Middle East,Asia
+143,Pakistan,188410000.0,Islamabad,Southern and Central Asia,Asia
+144,Papua New Guinea,7398500.0,Port Moresby,Melanesia,Oceania
+145,Paraguay,6893727.0,Asunción,South America,South America
+146,Peru,30814175.0,Lima,South America,South America
+147,Philippines,100697400.0,Manila,Southeast Asia,Asia
+148,Poland,38496000.0,Warsaw,Eastern Europe,Europe
+149,Portugal,10477800.0,Lisbon,Southern Europe,Europe
+150,Puerto Rico,3615086.0,San Juan,Caribbean,North America
+151,Qatar,2269672.0,Doha,Middle East,Asia
+152,Republic of the Congo,4559000.0,Brazzaville,Central Africa,Africa
+153,Romania,19942642.0,Bucharest,Eastern Europe,Europe
+154,Russia,146233000.0,Moscow,Eastern Europe,Europe
+155,Rwanda,10996891.0,Kigali,Eastern Africa,Africa
+156,Réunion,840974.0,Saint-Denis,Eastern Africa,Africa
+157,Saint Helena,4255.0,Jamestown,Western Africa,Africa
+158,Saint Kitts and Nevis,55000.0,Basseterre,Caribbean,North America
+159,Saint Pierre and Miquelon,6081.0,Saint-Pierre,North America,North America
+160,Samoa,187820.0,Apia,Polynesia,Oceania
+161,San Marino,32743.0,City of San Marino,Southern Europe,Europe
+162,Saudi Arabia,30770375.0,Riyadh,Middle East,Asia
+163,Senegal,13508715.0,Dakar,Western Africa,Africa
+164,Serbia,7186862.0,Belgrade,,
+165,Seychelles,89949.0,Victoria,Eastern Africa,Africa
+166,Sierra Leone,6205000.0,Freetown,Western Africa,Africa
+167,Singapore,5469700.0,Singapore,Southeast Asia,Asia
+168,Slovakia,5415949.0,Bratislava,Eastern Europe,Europe
+169,Slovenia,2064966.0,Ljubljana,Southern Europe,Europe
+170,Solomon Islands,581344.0,Honiara,Melanesia,Oceania
+171,Somalia,10806000.0,Mogadishu,Eastern Africa,Africa
+172,South Africa,54002000.0,Pretoria,Southern Africa,Africa
+173,South Georgia,30.0,King Edward Point,Antarctica,Antarctica
+174,South Korea,50423955.0,Seoul,Eastern Asia,Asia
+175,South Sudan,11384393.0,Juba,Eastern Africa,Africa
+176,Spain,46507760.0,Madrid,Southern Europe,Europe
+177,Sri Lanka,20277597.0,Colombo,Southeast Asia,Asia
+178,Sudan,37289406.0,Khartoum,Northern Africa,Africa
+179,Suriname,534189.0,Paramaribo,South America,South America
+180,Svalbard and Jan Mayen,2562.0,Longyearbyen,Nordic Countries,Europe
+181,Swaziland,1106189.0,Lobamba,Southern Africa,Africa
+182,Sweden,9737521.0,Stockholm,Nordic Countries,Europe
+183,Switzerland,8183800.0,Bern,Western Europe,Europe
+184,Syria,22964324.0,Damascus,Middle East,Asia
+185,São Tomé and Príncipe,187356.0,São Tomé,Central Africa,Africa
+186,Taiwan,23424615.0,Taipei,,
+187,Tajikistan,8161000.0,Dushanbe,Southern and Central Asia,Asia
+188,Tanzania,47421786.0,Dodoma,Eastern Africa,Africa
+189,Thailand,64871000.0,Bangkok,Southeast Asia,Asia
+190,The Bahamas,319031.0,Nassau,Caribbean,North America
+191,The Gambia,1882450.0,Banjul,Western Africa,Africa
+192,Togo,6993000.0,Lomé,Western Africa,Africa
+193,Trinidad and Tobago,1328019.0,Port of Spain,Caribbean,North America
+194,Tunisia,10982754.0,Tunis,Northern Africa,Africa
+195,Turkey,76667864.0,Ankara,Middle East,Asia
+196,Turkmenistan,5838064.0,Ashgabat,Southern and Central Asia,Asia
+197,Tuvalu,11323.0,Funafuti,Polynesia,Oceania
+198,Uganda,34856813.0,Kampala,Eastern Africa,Africa
+199,Ukraine,42973696.0,Kiev,Eastern Europe,Europe
+200,United Arab Emirates,9446000.0,Abu Dhabi,Middle East,Asia
+201,United Kingdom,64105654.0,London,British Isles,Europe
+202,United States,319259000.0,Washington D.C.,North America,North America
+203,Uruguay,3404189.0,Montevideo,South America,South America
+204,Uzbekistan,30492800.0,Tashkent,Southern and Central Asia,Asia
+205,Vanuatu,264652.0,Port Vila,Melanesia,Oceania
+206,Venezuela,30206307.0,Caracas,South America,South America
+207,Vietnam,89708900.0,Hanoi,Southeast Asia,Asia
+208,Wales,,,,Europe
+209,Wallis and Futuna,13135.0,Mata-Utu,Polynesia,Oceania
+210,Western Sahara,586000.0,El Aaiún,Northern Africa,Africa
+211,Yemen,25956000.0,Sana'a,Middle East,Asia
+212,Zambia,15023315.0,Lusaka,Eastern Africa,Europe
+213,Zimbabwe,13061239.0,Harare,Eastern Africa,Africa

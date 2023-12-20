@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+daily_weather.parquet
+weather_data.csv
+
 .DS_Store
 desktop.ini
 # C extensions
