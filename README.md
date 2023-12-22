@@ -44,7 +44,8 @@ https://www.kaggle.com/datasets/guillemservera/global-daily-climate-data
 Task/File List:
 Create database on MongoDB
 Create HTML file
-Create Javascript File
+Flask App 
+Create Javascript file
 
 Data Cleaning Process:
 
