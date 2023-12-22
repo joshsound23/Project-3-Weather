@@ -18,4 +18,4 @@ let myMap = L.map("map", {
 
 // Select marker function to update charts
 
-// Create 3 charts - Temp, Precip, Wind
+// Create 3 charts - Temp [stephanie], Precip[matt], Wind[ben]
