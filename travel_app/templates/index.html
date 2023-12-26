@@ -19,9 +19,36 @@
     <!-- Our CSS  -->
     <link rel="stylesheet" href="../static/css/style.css" />
 
+    <!-- Step 1 - Include the fusioncharts core library -->
+    <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+    <!-- Step 2 - Include the fusion theme -->
+    <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Charts Side by Side</title>
+    <style>
+        .chart-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px;
+        }
+        /* Style for each chart div */
+        #temp, #precip {
+            width: 45%; /* Adjust the width as needed */
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    </style>
+
   </head>
 
   <body>
+    <div class="chart-container">
+      <div id="temp"></div>
+      <div id="precip"></div>
+  </div>
 
     <div id="map"></div>
 
