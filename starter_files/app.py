@@ -175,3 +175,39 @@ def temp_end(start, end):
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
+
+##########  New Setup ########## Project
+from flask import Flask, jsonify
+from pymongo import MongoClient
+
+app = Flask(__name__)
+
+# Initialize MongoDB connection
+client = MongoClient('mongodb://localhost:27017/')  # Replace with your MongoDB connection URL
+db = client['project3_weather']  # Replace 'your_database_name' with your database name
+collection = db['weather_data']  # Replace 'your_collection_name' with your collection name
+
+
+@app.route('/')
+def get_data():
+    data = list(collection.find({}))  # Retrieve all data from MongoDB
+    return jsonify({'data': data})
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
+@app.route("/")
+def welcome():
+    """List all available api routes."""
+    return (
+        f"Available Routes:<br/>"
+        f"/api/v1.0/precipitation<br/>"
+        f"/api/v1.0/stations<br/>"
+        f"/api/v1.0/tobs<br/>"
+        f"/api/v1.0/<start><br/>"
+        f"/api/v1.0/<start>/<end><br/>"
+    )
