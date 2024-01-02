@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>City Weather Filter</title>
+</head>
+<body>
+  <h1>City Weather Filter</h1>
+  <form id="cityFilterForm">
+    <label for="temperature">Temperature (°C):</label>
+    <select id="temperature" name="temperature">
+      <option value="">Select Temperature</option>
+      <option value="0">0°C</option>
+      <option value="10">10°C</option>
+      <!-- Add more temperature options as needed -->
+    </select>
+    <br><br>
+    <label for="season">Season:</label>
+    <select id="season" name="season">
+      <option value="">Select Season</option>
+      <option value="Spring">Spring</option>
+      <option value="Summer">Summer</option>
+      <option value="Autumn">Autumn</option>
+      <option value="Winter">Winter</option>
+    </select>
+    <br><br>
+    <label for="cityType">City Type:</label>
+    <select id="cityType" name="cityType">
+      <option value="us">US Cities</option>
+      <option value="international">International Cities</option>
+    </select>
+    <br><br>
+    <button type="submit">Filter Cities</button>
+  </form>
+
+  <div id="cityResults"></div>
+
+  <script>
+    document.getElementById('cityFilterForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const temperature = document.getElementById('temperature').value;
+      const season = document.getElementById('season').value;
+      const cityType = document.getElementById('cityType').value;
+      
+      let route = '';
+      if (cityType === 'us') {
+        route = '/us-cities';
+      } else if (cityType === 'international') {
+        route = '/international-cities';
+      }
+
+      fetch(`${route}?temperature=${temperature}&season=${season}`)
+        .then(response => response.json())
+        .then(data => {
+          // Process the retrieved data (for example, display it on the page)
+          const cityResults = document.getElementById('cityResults');
+          cityResults.innerHTML = '<h2>Filtered Cities</h2>';
+          cityResults.innerHTML += '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+        })
+        .catch(error => console.error('Error:', error));
+    });
+  </script>
+</body>
+</html>
