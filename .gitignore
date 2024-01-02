@@ -5,6 +5,7 @@ __pycache__/
 
 daily_weather.parquet
 weather_data.csv
+project3_weather.merged_data.json
 
 .DS_Store
 desktop.ini
