@@ -1,82 +1,80 @@
 
+
 // Load Json based on API route
-  
-// Create Map Object
-let myMap = L.map("map", {
-    center: [45.52, -122.67],
-    zoom: 3
-  });
-  
-  // Adding a tile layer (the background map image) to our map:
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  }).addTo(myMap);
 
-// Setting a static JSON for testing
-  let city_data = [
-    {
-      "_id": {
-        "$oid": "6582615df6a914f1bc5b2552"
-      },
-      "": 20116,
-      "station_id": 3772,
-      "city_name": "London",
-      "longitude": -0.116721844,
-      "latitude": 51.49999473,
-      "date": "2018-01-01",
-      "season": "Winter",
-      "avg_temp_c": 6.7,
-      "precipitation_mm": 5.1,
-      "snow_depth_mm": "",
-      "avg_wind_speed_kmh": 20.7,
-      "sunshine_total_min": ""
-    },
-    {
-      "_id": {
-        "$oid": "6582615df6a914f1bc5b2553"
-      },
-      "": 20120,
-      "station_id": 3772,
-      "city_name": "London",
-      "longitude": -0.116721844,
-      "latitude": 51.49999473,
-      "date": "2018-01-05",
-      "season": "Winter",
-      "avg_temp_c": 6.2,
-      "precipitation_mm": 5.8,
-      "snow_depth_mm": "",
-      "avg_wind_speed_kmh": 17.2,
-      "sunshine_total_min": ""
-    },
-    {
-      "_id": {
-        "$oid": "6582615df6a914f1bc5b2554"
-      },
-      "": 20121,
-      "station_id": 3772,
-      "city_name": "New York",
-      "longitude": -73.935242,
-      "latitude": 40.730610,
-      "date": "2018-01-06",
-      "season": "Winter",
-      "avg_temp_c": 3.4,
-      "precipitation_mm": 0.3,
-      "snow_depth_mm": "",
-      "avg_wind_speed_kmh": 11.6,
-      "sunshine_total_min": ""
-    }];
-    
-  d3.json(city_data).then(function(data) {
-    console.log(data);
-    
-  });
+function load_map(city_JSON){
+  console.log("!!!!!", city_JSON);
+  create_map(city_JSON);
+}
 
+
+
+// Setting a static JSON for initial load
+let initial_data = [
+  {
+    "_id": {
+      "$oid": "6582615df6a914f1bc5b2552"
+    },
+    "": 20116,
+    "station_id": 3772,
+    "city_name": "London",
+    "longitude": -0.116721844,
+    "latitude": 51.49999473,
+    "date": "2018-01-01",
+    "season": "Winter",
+    "avg_temp_c": 6.7,
+    "precipitation_mm": 5.1,
+    "snow_depth_mm": "",
+    "avg_wind_speed_kmh": 20.7,
+    "sunshine_total_min": ""
+  },
+  {
+    "_id": {
+      "$oid": "6582615df6a914f1bc5b2553"
+    },
+    "": 20120,
+    "station_id": 3772,
+    "city_name": "London",
+    "longitude": -0.116721844,
+    "latitude": 51.49999473,
+    "date": "2018-01-05",
+    "season": "Winter",
+    "avg_temp_c": 6.2,
+    "precipitation_mm": 5.8,
+    "snow_depth_mm": "",
+    "avg_wind_speed_kmh": 17.2,
+    "sunshine_total_min": ""
+  },
+  {
+    "_id": {
+      "$oid": "6582615df6a914f1bc5b2554"
+    },
+    "": 20121,
+    "station_id": 3772,
+    "city_name": "New York",
+    "longitude": -73.935242,
+    "latitude": 40.730610,
+    "date": "2018-01-06",
+    "season": "Winter",
+    "avg_temp_c": 3.4,
+    "precipitation_mm": 0.3,
+    "snow_depth_mm": "",
+    "avg_wind_speed_kmh": 11.6,
+    "sunshine_total_min": ""
+  }];
+
+// Creating map based on JSON input
+function create_map(city_data){
+// city_layer = L.layerGroup();
+city_layer.clearLayers();
+    
+  
 // Add popup Markers
 for (let i = 0; i < city_data.length; i++) {
   let city = city_data[i];
   L.marker([city.latitude, city.longitude])
     .bindPopup(`${city.city_name}`)
-    .addTo(myMap).on('click', onClick);
+    .addTo(city_layer).on('click', onClick);
 }
 
 // Select marker function to update charts
@@ -105,12 +103,12 @@ function onClick(e) {
 
     // Average list of temperatures to get an average temperature for time frame
     var total = 0;
-for(var i = 0; i < temps.length; i++) {
+  for(var i = 0; i < temps.length; i++) {
     total += temps[i];
-}
-avg_temp = total / temps.length;
+  }
+  avg_temp = total / temps.length;
 
-console.log(avg_temp);
+  console.log(avg_temp);
 
 
 // Create list of precipitation in that city for the time frame
@@ -134,10 +132,13 @@ console.log(avg_precip);
 
 }
 
-var avg_temp = 10
-var avg_precip = 15
+
+}
 
 // Create 3 charts - Temp, Precip, Wind
+
+var avg_temp = 10
+var avg_precip = 15
 
 // Temperature Chart https://jsfiddle.net/fusioncharts/ND2WL/
 FusionCharts.ready(function () {
@@ -262,9 +263,26 @@ FusionCharts.ready(function() {
           var chargeInterval = setInterval( function(){
               var p_value = avg_precip;
               FusionCharts.items["cityPrecip"].feedData("&value="+p_value);
+              // FusionCharts.items["cityPrecip"].feedData("&text="+p_value);
           }, 4);
         },
         
       }
     }).render();
 });
+
+let city_layer = L.layerGroup();
+
+// Create Map Object
+let myMap = L.map("map", {
+  center: [45.52, -122.67],
+  zoom: 3,
+  layers: city_layer
+});
+
+// Adding a tile layer (the background map image) to our map:
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(myMap);
+
+create_map(initial_data);
