@@ -1,4 +1,21 @@
-console.log()
+
+// Load Json based on API route
+// fetch('https://server.com/test.json')
+//     .then((response) => response.json())
+//     .then((json) => console.log(json));
+
+    // fetch('../prework_folder/test.json')
+    // .then((response) => response.json())
+    // .then((json) => console.log(json));
+
+    let city_data = '../prework_folder/test.json';
+    
+    d3.json(city_data).then(function(data) {
+      console.log(data);
+
+    });
+
+  
 // Create Map Object
 let myMap = L.map("map", {
     center: [51.4999947297, -0.11672184386],
