@@ -3,16 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <title>City Weather Filter</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    form {
+      max-width: 400px;
+      margin: 20px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    select,
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #cityResults {
+      margin-top: 20px;
+    }
+
+    pre {
+      background-color: #f9f9f9;
+      padding: 10px;
+      border-radius: 4px;
+      overflow-x: auto;
+    }
+  </style>
 </head>
 <body>
   <h1>City Weather Filter</h1>
   <form id="cityFilterForm">
     <label for="temperature">Temperature (°C):</label>
     <select id="temperature" name="temperature">
-      <option value="">Select Temperature</option>
-      <option value="0">0°C</option>
-      <option value="10">10°C</option>
-      <!-- Add more temperature options as needed -->
+        <option value="">Select Temperature</option>
+        <!-- Dynamically generate temperature options -->
+        <script>
+          for (let temp = 5; temp <= 40; temp++) {
+            document.write(`<option value="${temp}">${temp}°C</option>`);
+          }
+        </script>
     </select>
     <br><br>
     <label for="season">Season:</label>
@@ -32,23 +92,19 @@
     <br><br>
     <button type="submit">Filter Cities</button>
   </form>
-
   <div id="cityResults"></div>
-
   <script>
     document.getElementById('cityFilterForm').addEventListener('submit', function(event) {
       event.preventDefault();
       const temperature = document.getElementById('temperature').value;
       const season = document.getElementById('season').value;
       const cityType = document.getElementById('cityType').value;
-      
       let route = '';
       if (cityType === 'us') {
         route = '/us-cities';
       } else if (cityType === 'international') {
         route = '/international-cities';
       }
-
       fetch(`${route}?temperature=${temperature}&season=${season}`)
         .then(response => response.json())
         .then(data => {
