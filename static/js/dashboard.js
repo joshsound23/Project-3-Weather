@@ -1,6 +1,19 @@
 
 // Load Json based on API route
-  
+// document.getElementById("submit").addEventListener('click', function(){
+//   let myVariableElement = document.getElementById("cityResults.innerhtml");
+//   if (myVariableElement) {
+//     let divData = myVariableElement.innerHTML;
+//     console.log(divData);
+//   }
+// });
+let myVariableElement = document.getElementById("cityResults");
+if (myVariableElement) {
+  let divData = myVariableElement.innerHTML;
+  console.log(divData);
+}
+
+
 // Create Map Object
 let myMap = L.map("map", {
     center: [45.52, -122.67],
