@@ -191,12 +191,6 @@ FusionCharts.ready(function() {
       }
     }).render();
 });
-
-  // Adding a tile layer (the background map image) to our map:
-  // We use the addTo() method to add objects to our map.
-  let weather_data = '../prework_folder/test.json';
-  let city_data = '../prework_folder/cities_data.json'
-  
   // use D3 to grab json data.
     // Fetch the JSON data using D3.js
     d3.json(merged_data)

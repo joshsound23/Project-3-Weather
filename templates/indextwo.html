@@ -6,13 +6,17 @@
 </head>
 <body>
   <h1>City Weather Filter</h1>
+  <img src="https://wallpapers.com/images/featured/travel-ibk7fgrvtvhs7qzg.jpg/" alt="Eiffel Tower View" width="500" height="300">
   <form id="cityFilterForm">
     <label for="temperature">Temperature (°C):</label>
     <select id="temperature" name="temperature">
-      <option value="">Select Temperature</option>
-      <option value="0">0°C</option>
-      <option value="10">10°C</option>
-      <!-- Add more temperature options as needed -->
+        <option value="">Select Temperature</option>
+        <!-- Dynamically generate temperature options -->
+        <script>
+          for (let temp = 5; temp <= 40; temp++) {
+            document.write(`<option value="${temp}">${temp}°C</option>`);
+          }
+        </script>
     </select>
     <br><br>
     <label for="season">Season:</label>
@@ -43,7 +47,7 @@
       const cityType = document.getElementById('cityType').value;
       
       let route = '';
-      if (cityType === 'us') {
+      if (cityType === 'us') { 
         route = '/us-cities';
       } else if (cityType === 'international') {
         route = '/international-cities';
@@ -60,7 +64,4 @@
         .catch(error => console.error('Error:', error));
     });
   </script>
-</body>
-
-
 </html>
