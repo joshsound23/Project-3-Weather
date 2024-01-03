@@ -40,7 +40,7 @@ def us_cities():
         query['avg_temp_c'] = float(temperature)
     if season:
         query['season'] = season
-    return get_random_cities(query, city_limit)
+    data = get_random_cities(query, city_limit)
 
     # Perform MongoDB query for U.S. cities, excluding the _id field
     #cursor = collection.find(query, {'_id': 0})
@@ -70,12 +70,16 @@ def international_cities():
     return get_random_cities(query, city_limit)
 
     # Perform MongoDB query for international cities, excluding the _id field
-    cursor = collection.find(query, {'_id': 0})
+    #cursor = collection.find(query, {'_id': 0})
 
     # Convert MongoDB cursor to a JSON-serializable list of dictionaries using bson.json_util
-    international_cities_filtered = json_util.dumps(list(cursor))
+    #international_cities_filtered = json_util.dumps(list(cursor))
 
-    return international_cities_filtered
+    #return international_cities_filtered
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
+
