@@ -219,7 +219,7 @@ FusionCharts.ready(function() {
           "caption": "Avg. Precipitation",
           "subcaption": "Rain",
           "lowerLimit": "0",
-          "upperLimit": "120",
+          "upperLimit": "50",
           "lowerLimitDisplay": "Empty",
           "upperLimitDisplay": "Full",
           "numberSuffix": " millimeters",
