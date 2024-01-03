@@ -197,7 +197,7 @@ FusionCharts.ready(function() {
     .then(data => {
         console.log(data);
         let uniqueLocations = {};
-    
+        
         data.forEach(location => {
             console.log('Processing location:', location);
             let lat = parseFloat(location.latitude);
