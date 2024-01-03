@@ -108,12 +108,34 @@ function onClick(e) {
 for(var i = 0; i < temps.length; i++) {
     total += temps[i];
 }
-var avg_temp = total / temps.length;
+avg_temp = total / temps.length;
 
 console.log(avg_temp);
 
+
+// Create list of precipitation in that city for the time frame
+const precips = [];
+for (let i = 0; i < filtered.length; i++) {
+  let precip_record = filtered[i];
+  precips.push(precip_record.precipitation_mm);
+
 }
-  
+console.log(precips);
+
+// Average list of precipitation to get an average precipitation for time frame
+var total_precip = 0;
+for(var i = 0; i < precips.length; i++) {
+total_precip += precips[i];
+}
+avg_precip = total_precip / precips.length;
+
+console.log(avg_precip);
+
+
+}
+
+var avg_temp = 10
+var avg_precip = 15
 
 // Create 3 charts - Temp, Precip, Wind
 
@@ -142,7 +164,7 @@ FusionCharts.ready(function () {
               "thmOriginX": "100",
               "theme" : "fint"
           },
-          "value": "-6",
+          "value": avg_temp,
           //All annotations are grouped under this element
           "annotations": {
               "showbelow": "0",
@@ -172,9 +194,9 @@ FusionCharts.ready(function () {
       "events" :{
           "rendered" : function (evt, arg) {
               var chargeInterval = setInterval( function(){
-                  var temp = parseInt(Math.random()*2) -5;
+                  var temp = avg_temp;
                   FusionCharts.items["cityTemp"].feedData("&value="+temp);
-              }, 4000);
+              }, 4);
           }   
       }
   })
@@ -200,7 +222,7 @@ FusionCharts.ready(function() {
           "upperLimit": "120",
           "lowerLimitDisplay": "Empty",
           "upperLimitDisplay": "Full",
-          "numberSuffix": " inches",
+          "numberSuffix": " millimeters",
           "showValue": "1",
           "chartBottomMargin": "45",
           "showValue": "0"
@@ -226,7 +248,7 @@ FusionCharts.ready(function() {
                 "type": "Text",
                 "fontSize": "11",
                 "fillcolor": "#333333",
-                "text": "80 ltrs",
+                "text": avg_precip,
                 "x": "$chartCenterX-45",
                 "y": "$chartEndY-50"
               }
@@ -237,11 +259,10 @@ FusionCharts.ready(function() {
       },
       "events": {
         "rendered": function(evtObj, argObj) {
-          setInterval(function() {
-            (rainVolume < 10) ? (rainVolume = 80) : "";
-            var consVolume = rainVolume - (Math.floor(Math.random() * 3));
-            
-          }, 1000);
+          var chargeInterval = setInterval( function(){
+              var p_value = avg_precip;
+              FusionCharts.items["cityPrecip"].feedData("&value="+p_value);
+          }, 4);
         },
         
       }
