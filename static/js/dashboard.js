@@ -286,3 +286,17 @@ let myMap = L.map("map", {
 }).addTo(myMap);
 
 create_map(initial_data);
+
+let city_layer = L.layerGroup();
+
+// Create Map Object
+let myMap = L.map("map", {
+  center: [45.52, -122.67],
+  zoom: 3,
+  layers: city_layer
+});
+
+// Adding a tile layer (the background map image) to our map:
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(myMap);

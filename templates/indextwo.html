@@ -82,15 +82,10 @@
 
   <div id="map"></div>
 
+    <div id="cityResults"></div>
 
-  <div id="cityResults"></div>
-
-  <script
-  src="https://unpkg.com/leaflet/dist/leaflet.js"
-  integrity="sha512-gZwzFq7LOdhjNSQ+bPPFE5fS3ZVDczg9U5fDJJ7q6lOGkmU9skqC7iQC3bBQ2q2P5K38PvH/E6WupvQJfhN/jQ=="
-  crossorigin=""
-></script>
-
+    <!-- JavaScript file -->
+  <script type="text/javascript" src="../static/js/dashboard.js"></script>
   <script>
 
 
@@ -107,21 +102,20 @@
         route = '/international-cities';
       }
 
+      
       fetch(`${route}?temperature=${temperature}&season=${season}`)
         .then(response => response.json())
         .then(data => {
           // Process the retrieved data (for example, display it on the page)
-          const cityResults = document.getElementById('cityResults');
-          cityResults.innerHTML = '<h2>Filtered Cities</h2>';
-          cityResults.innerHTML += '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+          // const cityResults = document.getElementById('cityResults');
+          // cityResults.innerHTML += '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+          load_map(data)
         })
         .catch(error => console.error('Error:', error)); 
     });
-
-  </script>
-    <!-- JavaScript file -->
-    <script type="text/javascript" src="../static/js/dashboard.js"></script>
     
+  </script>
+  
 </body>
 </html>
 
