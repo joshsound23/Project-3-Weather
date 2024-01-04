@@ -82,10 +82,10 @@
 
   <div id="map"></div>
 
-  <!-- JavaScript file -->
-  <script type="text/javascript" src="dashboardtwo.js"></script>
-  <div id="cityResults"></div>
+    <div id="cityResults"></div>
 
+    <!-- JavaScript file -->
+  <script type="text/javascript" src="../static/js/dashboard.js"></script>
   <script>
     document.getElementById('cityFilterForm').addEventListener('submit', function(event) {
       event.preventDefault();
@@ -100,17 +100,20 @@
         route = '/international-cities';
       }
 
+      
       fetch(`${route}?temperature=${temperature}&season=${season}`)
         .then(response => response.json())
         .then(data => {
           // Process the retrieved data (for example, display it on the page)
-          const cityResults = document.getElementById('cityResults');
-          cityResults.innerHTML = '<h2>Filtered Cities</h2>';
-          cityResults.innerHTML += '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+          // const cityResults = document.getElementById('cityResults');
+          // cityResults.innerHTML += '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
+          load_map(data)
         })
         .catch(error => console.error('Error:', error)); 
     });
+    
   </script>
+  
 </body>
 </html>
 
