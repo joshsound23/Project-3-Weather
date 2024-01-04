@@ -40,7 +40,7 @@ def us_cities():
         query['avg_temp_c'] = float(temperature)
     if season:
         query['season'] = season
-    data = get_random_cities(query, city_limit)
+    return get_random_cities(query, city_limit)
 
     # Perform MongoDB query for U.S. cities, excluding the _id field
     #cursor = collection.find(query, {'_id': 0})
