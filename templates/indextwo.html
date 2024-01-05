@@ -42,13 +42,48 @@
        }
    </style>
 
+   <title>images Side by Side</title>
+   <style>
+       .image-container {
+           display: flex;
+           justify-content: space-between;
+           margin: 20px;
+       }
+       /* Style for each chart div */
+       #temp, #precip {
+           width: 45%; /* Adjust the width as needed */
+           border: 1px solid #ccc;
+           padding: 10px;
+           box-sizing: border-box;
+       }
+   </style> 
+
 </head>
 <body>
   <h1>City Weather Filter</h1>
-  <img src="https://wallpapers.com/images/featured/travel-ibk7fgrvtvhs7qzg.jpg/" alt="Eiffel Tower View" width="500" height="300">
+  <div class="image-container">
+    <img src="https://wallpapers.com/images/featured/travel-ibk7fgrvtvhs7qzg.jpg/" alt="Eiffel Tower View" width="500" height="300">
+    <img src="">
+  </div>
+  <!-- <img src="https://wallpapers.com/images/featured/travel-ibk7fgrvtvhs7qzg.jpg/" alt="Eiffel Tower View" width="500" height="300"> -->
   <form id="cityFilterForm">
-    <label for="temperature">Temperature (°C):</label>
+  <h3> Select a range of Temperatures between 5°C and 40°C.<br> 
+  Then select your preferance of season and location. <br> 
+  Hit the filter button and the map will return some travel suggestions based on<br>
+  US capital cities or international locations. <br>
+  Click the popups to learn more about about the weather in the selceted city.
+  </h3>
+    <!-- <label for="temperature">Temperature (°C):</label>
     <select id="temperature" name="temperature">
+        <option value="">Select Temperature</option>
+        <script>
+          for (let temp = 5; temp <= 40; temp++) {
+            document.write(`<option value="${temp}">${temp}°C</option>`);
+          }
+        </script>
+    </select> -->
+    <label for="min_temp">Min Temperature (°C):</label>
+    <select id="min_temp" name="min_temp">
         <option value="">Select Temperature</option>
         <!-- Dynamically generate temperature options -->
         <script>
@@ -57,6 +92,17 @@
           }
         </script>
     </select>
+    <label for="max_temp">Max Temperature (°C):</label>
+    <select id="max_temp" name="max_temp">
+        <option value="">Select Temperature</option>
+        <!-- Dynamically generate temperature options -->
+        <script>
+          for (let temp = 5; temp <= 40; temp++) {
+            document.write(`<option value="${temp}">${temp}°C</option>`);
+          }
+        </script>
+    </select>
+
     <br><br>
     <label for="season">Season:</label>
     <select id="season" name="season">
@@ -87,9 +133,13 @@
     <!-- JavaScript file -->
   <script type="text/javascript" src="../static/js/dashboard.js"></script>
   <script>
+
+
     document.getElementById('cityFilterForm').addEventListener('submit', function(event) {
       event.preventDefault();
-      const temperature = document.getElementById('temperature').value;
+      // const temperature = document.getElementById('temperature').value;
+      const min_temp = document.getElementById('min_temp').value;
+      const max_temp = document.getElementById('max_temp').value;
       const season = document.getElementById('season').value;
       const cityType = document.getElementById('cityType').value;
       
@@ -101,7 +151,8 @@
       }
 
       
-      fetch(`${route}?temperature=${temperature}&season=${season}`)
+      // fetch(`${route}?temperature=${temperature}&season=${season}`)
+      fetch(`${route}?max_temp=${max_temp}&min_temp=${min_temp}&season=${season}`)
         .then(response => response.json())
         .then(data => {
           // Process the retrieved data (for example, display it on the page)

@@ -25,23 +25,45 @@ def get_random_cities(query, city_limit):
 
 @app.route('/us-cities', methods=['GET'])
 def us_cities():
+    try:
     # Retrieve user inputs for temperature and season
-    temperature = request.args.get('temperature')
-    season = request.args.get('season')
-    city_limit = 5
+        # temperature = request.args.get('temperature')
+        max_temp = request.args.get('max_temp')
+        # print(request.args.get('min_temp'))
+        min_temp = request.args.get('min_temp')
+        season = request.args.get('season')
+        city_limit = 10
 
     # Prepare the query for U.S. cities based on user inputs 
-    query = {
+        query = {
         'country': 'United States of America'
-    }
+        }
 
     # Add optional filters based on user input for temperature and season
+<<<<<<< HEAD
     if temperature:
         query['avg_temp_c'] = float(temperature)
     if season:
         query['season'] = season
     return get_random_cities(query, city_limit)
 
+=======
+        # if temperature:
+        if max_temp and min_temp:
+            # query['avg_temp_c'] = float(temperature)
+            query['avg_temp_c'] = {
+                '$lte': float (max_temp),
+                '$gte': float (min_temp)
+            }
+        if season:
+            query['season'] = season
+        data = get_random_cities(query, city_limit)
+        print(data.json)
+        return data
+    except Exception as e:
+        app.logger.error(f"An error occurred: {str(e)}")
+        return jsonify({'error': f'An internal server error occurred: {str(e)}'}), 500
+>>>>>>> f71f4cd1bd614fc6ffbd91aa3fcd5b05132a40e7
     # Perform MongoDB query for U.S. cities, excluding the _id field
     #cursor = collection.find(query, {'_id': 0})
 
@@ -53,18 +75,24 @@ def us_cities():
 @app.route('/international-cities', methods=['GET'])
 def international_cities():
     # Retrieve user inputs for temperature and season
-    temperature = request.args.get('temperature')
+    max_temp = request.args.get('max_temp')
+        # print(request.args.get('min_temp'))
+    min_temp = request.args.get('min_temp')
     season = request.args.get('season')
-    city_limit = 5
+    city_limit = 10
 
-    # Prepare the query for international cities based on user inputs
+# Prepare the query for international cities based on user inputs
     query = {
-        'country': {'$ne': 'United States of America'}
-    }
+    'country': {'$ne': 'United States of America'}
+}
 
-    # Add optional filters based on user input for temperature and season
-    if temperature:
-        query['avg_temp_c'] = float(temperature)
+# Add optional filters based on user input for temperature and season
+    if max_temp and min_temp:
+        # query['avg_temp_c'] = float(temperature)
+        query['avg_temp_c'] = {
+            '$lte': float (max_temp),
+            '$gte': float (min_temp)
+        }
     if season:
         query['season'] = season
     return get_random_cities(query, city_limit)

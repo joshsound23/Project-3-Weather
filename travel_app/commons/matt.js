@@ -1,64 +1,26 @@
+console.log()
 
-
-// Load Json based on API route
-
-function load_map(city_JSON){
-  console.log("!!!!!", city_JSON);
-  create_map(city_JSON);
-}
-
-
-
-// Setting a static JSON for initial load
-let initial_data = [
-  {
-    "_id": {
-      "$oid": "6582615df6a914f1bc5b2552"
-    },
-    "": 20116,
-    "station_id": 3772,
-    "city_name": "London",
-    "longitude": -0.116721844,
-    "latitude": 51.49999473,
-    "date": "2018-01-01",
-    "season": "Winter",
-    "avg_temp_c": 6.7,
-    "precipitation_mm": 5.1,
-    "snow_depth_mm": "",
-    "avg_wind_speed_kmh": 20.7,
-    "sunshine_total_min": ""
-  },
-  {
-    "_id": {
-      "$oid": "659490d95c90de7344c49b41"
-    },
-    "station_id": 72518,
-    "city_name": "Albany",
-    "date": "2018-01-01",
-    "season": "Winter",
-    "avg_temp_c": -17.3,
-    "precipitation_mm": 0,
-    "snow_depth_mm": 80,
-    "avg_wind_speed_kmh": 8.6,
-    "sunshine_total_min": "",
-    "country": "United States of America",
-    "state": "New York",
-    "latitude": 42.6700169058,
-    "longitude": -73.8199491798
-  }];
-
-// Creating map based on JSON input
-function create_map(city_data){
-// city_layer = L.layerGroup();
-city_layer.clearLayers();
-    
   
+// Create Map Object
+let myMap = L.map("map", {
+    center: [45.52, -122.67],
+    zoom: 3
+  });
+  
+  // Adding a tile layer (the background map image) to our map:
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(myMap);
+
+// Setting a static JSON for testing
+  
+
 // Add popup Markers
 for (let i = 0; i < city_data.length; i++) {
   let city = city_data[i];
   L.marker([city.latitude, city.longitude])
-    .bindPopup(`${city.city_name}, ${city.country}`)
-    .addTo(city_layer).on('click', onClick);
+    .bindPopup(`${city.city_name}`)
+    .addTo(myMap).on('click', onClick);
 }
 
 // Select marker function to update charts
@@ -67,14 +29,12 @@ for (let i = 0; i < city_data.length; i++) {
 function onClick(e) {
   var popup = e.target.getPopup();
   var content = popup.getContent();
-  // console.log("=========================================================")
-  // console.log(popup)
-  // console.log(content.split(",")[0]);
-  // console.log("=========================================================")
+
+  console.log(content);
 
   // Filter JSON by city clicked on
   filtered = city_data.filter(function (i) {
-    return i.city_name === content.split(",")[0];
+    return i.city_name === content;
   });
     console.log(filtered);
 
@@ -89,42 +49,17 @@ function onClick(e) {
 
     // Average list of temperatures to get an average temperature for time frame
     var total = 0;
-  for(var i = 0; i < temps.length; i++) {
+for(var i = 0; i < temps.length; i++) {
     total += temps[i];
-  }
-  avg_temp = total / temps.length;
+}
+var avg_temp = total / temps.length;
 
-  console.log(avg_temp);
-
-
-// Create list of precipitation in that city for the time frame
-const precips = [];
-for (let i = 0; i < filtered.length; i++) {
-  let precip_record = filtered[i];
-  precips.push(precip_record.precipitation_mm);
+console.log(avg_temp);
 
 }
-console.log(precips);
-
-// Average list of precipitation to get an average precipitation for time frame
-var total_precip = 0;
-for(var i = 0; i < precips.length; i++) {
-total_precip += precips[i];
-}
-avg_precip = total_precip / precips.length;
-
-console.log(avg_precip);
-
-
-}
-
-
-}
+  
 
 // Create 3 charts - Temp, Precip, Wind
-
-var avg_temp = 10
-var avg_precip = 15
 
 // Temperature Chart https://jsfiddle.net/fusioncharts/ND2WL/
 FusionCharts.ready(function () {
@@ -151,7 +86,7 @@ FusionCharts.ready(function () {
               "thmOriginX": "100",
               "theme" : "fint"
           },
-          "value": avg_temp,
+          "value": "-6",
           //All annotations are grouped under this element
           "annotations": {
               "showbelow": "0",
@@ -181,9 +116,9 @@ FusionCharts.ready(function () {
       "events" :{
           "rendered" : function (evt, arg) {
               var chargeInterval = setInterval( function(){
-                  var temp = avg_temp;
+                  var temp = parseInt(Math.random()*2) -5;
                   FusionCharts.items["cityTemp"].feedData("&value="+temp);
-              }, 4);
+              }, 4000);
           }   
       }
   })
@@ -206,10 +141,10 @@ FusionCharts.ready(function() {
           "caption": "Avg. Precipitation",
           "subcaption": "Rain",
           "lowerLimit": "0",
-          "upperLimit": "50",
+          "upperLimit": "120",
           "lowerLimitDisplay": "Empty",
           "upperLimitDisplay": "Full",
-          "numberSuffix": " millimeters",
+          "numberSuffix": " inches",
           "showValue": "1",
           "chartBottomMargin": "45",
           "showValue": "0"
@@ -235,7 +170,7 @@ FusionCharts.ready(function() {
                 "type": "Text",
                 "fontSize": "11",
                 "fillcolor": "#333333",
-                "text": avg_precip,
+                "text": "80 ltrs",
                 "x": "$chartCenterX-45",
                 "y": "$chartEndY-50"
               }
@@ -246,29 +181,57 @@ FusionCharts.ready(function() {
       },
       "events": {
         "rendered": function(evtObj, argObj) {
-          var chargeInterval = setInterval( function(){
-              var p_value = avg_precip;
-              FusionCharts.items["cityPrecip"].feedData("&value="+p_value);
-              // FusionCharts.items["cityPrecip"].feedData("&text="+p_value);
-          }, 4);
+          setInterval(function() {
+            (rainVolume < 10) ? (rainVolume = 80) : "";
+            var consVolume = rainVolume - (Math.floor(Math.random() * 3));
+            
+          }, 1000);
         },
         
       }
     }).render();
 });
+  // use D3 to grab json data.
+    // Fetch the JSON data using D3.js
+    d3.json(merged_data)
+    .then(data => {
+        console.log(data);
+        let uniqueLocations = {};
+        
+        data.forEach(location => {
+            console.log('Processing location:', location);
+            let lat = parseFloat(location.latitude);
+            let lng = parseFloat(location.longitude);
+            let date = location.date; // Directly using the date from JSON
+            let precipitation = location.precipitation_mm; // Using the precipitation directly
+    
+            // Assuming precipitation might be empty, parse it to float if it's not empty
+            if (precipitation !== "") {
+                precipitation = parseFloat(precipitation);
+            }
+    
+            let cityName = location.city_name;
+    
+            if (!isNaN(lat) && !isNaN(lng)) {
+                if (!uniqueLocations[cityName]) {
+                    uniqueLocations[cityName] = {
+                        lat: lat,
+                        lng: lng,
+                        date: date,
+                        precipitation: precipitation
+                    };
+                    console.log('Latitude:', lat, 'Longitude:', lng);
+                    // Create a marker at the location and bind a popup
+                    const marker = L.marker([lat, lng]).addTo(myMap);
+                    marker.bindPopup(`City: ${cityName}<br>Date: ${date}<br>Precipitation: ${precipitation}`);
+                }
+            }
+        });
 
-let city_layer = L.layerGroup();
-
-// Create Map Object
-let myMap = L.map("map", {
-  center: [15.411702, -15.961184],
-  zoom: 2.5,
-  layers: city_layer
-});
-
-// Adding a tile layer (the background map image) to our map:
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(myMap);
-
-create_map(initial_data);
+        // Once you have uniqueLocations populated, you can use it to create charts or other visualizations
+        console.log(uniqueLocations);
+    })
+    .catch(error => {
+        console.error('Error fetching/parsing JSON:', error);
+    });
+// Create 3 charts - Temp [stephanie], Precip[matt], Wind[ben]

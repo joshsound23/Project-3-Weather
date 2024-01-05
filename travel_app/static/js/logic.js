@@ -18,8 +18,8 @@
   
 // Create Map Object
 let myMap = L.map("map", {
-    center: [45.52, -122.67],
-    zoom: 3
+    center: [51.4999947297, -0.11672184386],
+    zoom: 12
   });
   
   // Adding a tile layer (the background map image) to our map:
@@ -27,138 +27,35 @@ let myMap = L.map("map", {
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(myMap);
+ 
+  let weather_data = '../prework_folder/test.json';
+  let city_data = '../prework_folder/cities_data.json';
 
-// Add popup Markers
+  // use D3 to grab json data.
+    // Fetch the JSON data using D3.js
+    d3.json(city_data)
+        .then(data => {
+          console.log(data)
+          data.forEach(location => {
+            
+            let lat = 51.4999947297;
+            let lng = -0.11672184386;
+            let date = 1514764800000;
+            let precip = location.precipitation_mm;
+            // console.log(precip)
+            
+            let marker = L.marker([lat, lng,]).addTo(myMap);
+            marker.bindPopup(precip);
+  
+          });
+
+            // Your code to handle each location (if needed)
+        })
+    .catch(error => {
+        console.error('Error fetching/parsing JSON:', error);
+    });
+    // Logic to render visualization with the data
 
 // Select marker function to update charts
 
-// Create 3 charts - Temp, Precip, Wind
-
-FusionCharts.ready(function () {
-  var chart = new FusionCharts({
-      type: 'thermometer',
-      renderAt: 'temp',
-      id  : 'cityTemp',
-      width: '240',
-      height: '300',
-      dataFormat: 'json',
-      dataSource: {
-          "chart": {
-              "caption": "Avg. Temperature",
-              "subcaption": " City Name",
-              "lowerLimit": "-20",
-              "upperLimit": "20",
-              "numberSuffix": "°C",
-              "showhovereffect": "1",
-              "thmFillColor": "#008ee4",
-              "showGaugeBorder" : "1",
-              "gaugeBorderColor" :  "#008ee4",
-              "gaugeBorderThickness" :  "2",
-              "gaugeBorderAlpha" :  "30",
-              "thmOriginX": "100",
-              "theme" : "fint"
-          },
-          "value": "-6",
-          //All annotations are grouped under this element
-          "annotations": {
-              "showbelow": "0",
-              "groups": [                        
-                  {                  
-                      //Each group needs a unique ID
-                      "id": "indicator",
-                      "items": [
-                          //Showing Annotation
-                          {
-                              "id": "background",
-                              //Polygon item 
-                              "type": "rectangle",
-                              "alpha" : "50",
-                              "fillColor": "#AABBCC",           
-                              "x" : "$gaugeEndX-35",
-                               "tox" : "$gaugeEndX",
-                              "y" : "$gaugeEndY+55",
-                              "toy" : "$gaugeEndY+72"
-                          }
-                      ]
-                  }
-              ]
-              
-          },
-      },
-      "events" :{
-          "rendered" : function (evt, arg) {
-              var chargeInterval = setInterval( function(){
-                  var temp = parseInt(Math.random()*2) -5;
-                  FusionCharts.items["cityTemp"].feedData("&value="+temp);
-              }, 4000);
-          }   
-      }
-  })
-  .render();
-});
-
-FusionCharts.ready(function() {
-  var fuelVolume = 110,
-    fuelWidget = new FusionCharts({
-      type: 'cylinder',
-      dataFormat: 'json',
-      id: 'cityPrecip',
-      renderAt: 'precip',
-      width: '240',
-      height: '300',
-      dataSource: {
-        "chart": {
-          "theme": "fusion",
-          "caption": "Avg. Precipitation",
-          "subcaption": "Rain",
-          "lowerLimit": "0",
-          "upperLimit": "120",
-          "lowerLimitDisplay": "Empty",
-          "upperLimitDisplay": "Full",
-          "numberSuffix": " inches",
-          "showValue": "1",
-          "chartBottomMargin": "45",
-          "showValue": "0"
-        },
-        "value": "75",
-        "annotations": {
-          "origw": "400",
-          "origh": "190",
-          "autoscale": "1",
-          "groups": [{
-            "id": "range",
-            "items": [{
-                "id": "rangeBg",
-                "type": "rectangle",
-                "x": "$canvasCenterX-45",
-                "y": "$chartEndY-30",
-                "tox": "$canvasCenterX +45",
-                "toy": "$chartEndY-75",
-                "fillcolor": "#6caa03"
-              },
-              {
-                "id": "rangeText",
-                "type": "Text",
-                "fontSize": "11",
-                "fillcolor": "#333333",
-                "text": "80 ltrs",
-                "x": "$chartCenterX-45",
-                "y": "$chartEndY-50"
-              }
-            ]
-          }]
-        }
-
-      },
-      "events": {
-        "rendered": function(evtObj, argObj) {
-          setInterval(function() {
-            (rainVolume < 10) ? (rainVolume = 80) : "";
-            var consVolume = rainVolume - (Math.floor(Math.random() * 3));
-            
-          }, 1000);
-        },
-        
-      }
-    }).render();
-});
+// Create 3 charts - Temp [stephanie], Precip[matt], Wind[ben]
