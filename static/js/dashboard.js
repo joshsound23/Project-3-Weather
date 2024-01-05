@@ -30,37 +30,21 @@ let initial_data = [
   },
   {
     "_id": {
-      "$oid": "6582615df6a914f1bc5b2553"
+      "$oid": "659490d95c90de7344c49b41"
     },
-    "": 20120,
-    "station_id": 3772,
-    "city_name": "London",
-    "longitude": -0.116721844,
-    "latitude": 51.49999473,
-    "date": "2018-01-05",
+    "station_id": 72518,
+    "city_name": "Albany",
+    "date": "2018-01-01",
     "season": "Winter",
-    "avg_temp_c": 6.2,
-    "precipitation_mm": 5.8,
-    "snow_depth_mm": "",
-    "avg_wind_speed_kmh": 17.2,
-    "sunshine_total_min": ""
-  },
-  {
-    "_id": {
-      "$oid": "6582615df6a914f1bc5b2554"
-    },
-    "": 20121,
-    "station_id": 3772,
-    "city_name": "New York",
-    "longitude": -73.935242,
-    "latitude": 40.730610,
-    "date": "2018-01-06",
-    "season": "Winter",
-    "avg_temp_c": 3.4,
-    "precipitation_mm": 0.3,
-    "snow_depth_mm": "",
-    "avg_wind_speed_kmh": 11.6,
-    "sunshine_total_min": ""
+    "avg_temp_c": -17.3,
+    "precipitation_mm": 0,
+    "snow_depth_mm": 80,
+    "avg_wind_speed_kmh": 8.6,
+    "sunshine_total_min": "",
+    "country": "United States of America",
+    "state": "New York",
+    "latitude": 42.6700169058,
+    "longitude": -73.8199491798
   }];
 
 // Creating map based on JSON input
@@ -73,7 +57,7 @@ city_layer.clearLayers();
 for (let i = 0; i < city_data.length; i++) {
   let city = city_data[i];
   L.marker([city.latitude, city.longitude])
-    .bindPopup(`${city.city_name}`)
+    .bindPopup(`${city.city_name}, ${city.country}`)
     .addTo(city_layer).on('click', onClick);
 }
 
@@ -83,12 +67,14 @@ for (let i = 0; i < city_data.length; i++) {
 function onClick(e) {
   var popup = e.target.getPopup();
   var content = popup.getContent();
-
-  console.log(content);
+  // console.log("=========================================================")
+  // console.log(popup)
+  // console.log(content.split(",")[0]);
+  // console.log("=========================================================")
 
   // Filter JSON by city clicked on
   filtered = city_data.filter(function (i) {
-    return i.city_name === content;
+    return i.city_name === content.split(",")[0];
   });
     console.log(filtered);
 
@@ -275,8 +261,8 @@ let city_layer = L.layerGroup();
 
 // Create Map Object
 let myMap = L.map("map", {
-  center: [45.52, -122.67],
-  zoom: 3,
+  center: [15.411702, -15.961184],
+  zoom: 2.5,
   layers: city_layer
 });
 
