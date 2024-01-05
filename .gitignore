@@ -2,7 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+cleaned_resources/project3_weather.merged_data.json
 daily_weather.parquet
 weather_data.csv
 
