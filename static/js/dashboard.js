@@ -3,7 +3,7 @@
 // Load Json based on API route
 
 function load_map(city_JSON){
-  console.log("!!!!!", city_JSON);
+  console.log("JSON", city_JSON);
   create_map(city_JSON);
 }
 
@@ -49,7 +49,6 @@ let initial_data = [
 
 // Creating map based on JSON input
 function create_map(city_data){
-// city_layer = L.layerGroup();
 city_layer.clearLayers();
     
   
@@ -67,10 +66,6 @@ for (let i = 0; i < city_data.length; i++) {
 function onClick(e) {
   var popup = e.target.getPopup();
   var content = popup.getContent();
-  // console.log("=========================================================")
-  // console.log(popup)
-  // console.log(content.split(",")[0]);
-  // console.log("=========================================================")
 
   // Filter JSON by city clicked on
   filtered = city_data.filter(function (i) {
@@ -115,6 +110,19 @@ avg_precip = total_precip / precips.length;
 
 console.log(avg_precip);
 
+// Find the average wind data by day per city
+const wind = [];
+for (let i = 0; i < filtered.length; i++) {
+  let wind_record = filtered[i];
+  wind.push(wind_record.avg_wind_speed_kmh);
+}
+console.log(wind);
+var total_wind = 0;
+for (var i = 0; i < wind.length; i++) {
+  total_wind += wind[i];
+}
+avg_wind = total_wind / wind.length;
+console.log(avg_wind);
 
 }
 
@@ -125,6 +133,7 @@ console.log(avg_precip);
 
 var avg_temp = 10
 var avg_precip = 15
+var avg_wind = 5
 
 // Temperature Chart https://jsfiddle.net/fusioncharts/ND2WL/
 FusionCharts.ready(function () {
@@ -138,9 +147,9 @@ FusionCharts.ready(function () {
       dataSource: {
           "chart": {
               "caption": "Avg. Temperature",
-              "subcaption": " City Name",
-              "lowerLimit": "-20",
-              "upperLimit": "20",
+              "subcaption": "",
+              "lowerLimit": "0",
+              "upperLimit": "40",
               "numberSuffix": "°C",
               "showhovereffect": "1",
               "thmFillColor": "#008ee4",
@@ -206,7 +215,7 @@ FusionCharts.ready(function() {
           "caption": "Avg. Precipitation",
           "subcaption": "Rain",
           "lowerLimit": "0",
-          "upperLimit": "50",
+          "upperLimit": "40",
           "lowerLimitDisplay": "Empty",
           "upperLimitDisplay": "Full",
           "numberSuffix": " millimeters",
@@ -214,7 +223,7 @@ FusionCharts.ready(function() {
           "chartBottomMargin": "45",
           "showValue": "0"
         },
-        "value": "75",
+        "value": avg_precip,
         "annotations": {
           "origw": "400",
           "origh": "190",
@@ -228,14 +237,14 @@ FusionCharts.ready(function() {
                 "y": "$chartEndY-30",
                 "tox": "$canvasCenterX +45",
                 "toy": "$chartEndY-75",
-                "fillcolor": "#6caa03"
+                "fillcolor": "#FFFFFF"
               },
               {
                 "id": "rangeText",
                 "type": "Text",
                 "fontSize": "11",
                 "fillcolor": "#333333",
-                "text": avg_precip,
+                // "text": avg_precip,
                 "x": "$chartCenterX-45",
                 "y": "$chartEndY-50"
               }
@@ -249,13 +258,82 @@ FusionCharts.ready(function() {
           var chargeInterval = setInterval( function(){
               var p_value = avg_precip;
               FusionCharts.items["cityPrecip"].feedData("&value="+p_value);
-              // FusionCharts.items["cityPrecip"].feedData("&text="+p_value);
           }, 4);
         },
         
       }
     }).render();
 });
+
+// https://www.fusioncharts.com/
+// Create wind chart
+FusionCharts.ready(function() {
+  var myChart = new FusionCharts({
+    type: "hlineargauge",
+    renderAt: "wind",
+    id: "cityWind",
+    width: "240",
+    height: "300",
+    dataFormat: "json",
+    dataSource: {
+      chart: {
+        caption: "Avg. Wind Speed",
+        subcaption: "",
+        theme: "gammel",
+        showvalue: "0",
+        pointerbghovercolor: "#FFFFFF",
+        pointerbghoveralpha: "80",
+        pointerhoverradius: "12",
+        showborderonhover: "1",
+        pointerborderhovercolor: "#333333",
+        pointerborderhoverthickness: "2",
+        showtickmarks: "0",
+        numbersuffix: "kmh"
+      },
+      colorrange: {
+        color: [
+          {
+            minvalue: "0",
+            maxvalue: "20",
+            label: "Calm",
+            code: "#32E3E3"
+          },
+          {
+            minvalue: "20",
+            maxvalue: "40",
+            label: "Breezy",
+            code: "#F9F9F9"
+          },
+          {
+            minvalue: "40",
+            maxvalue: "100",
+            label: "Windy",
+            code: "#888E8E"
+          }
+        ]
+      },
+      pointers: {
+        pointer: [
+          {
+            value: avg_wind,
+            tooltext: "$datavalue kilometers per hour of wind"
+          }
+        ]
+      }
+    },
+    "events" :{
+      "rendered" : function (evnt, argt) {
+          var chargeInterval = setInterval( function(){
+              var wind = avg_wind;
+              FusionCharts.items["cityWind"].feedData("&value="+wind);
+          }, 4);
+      }
+  }
+  }).render();
+});
+
+
+
 
 let city_layer = L.layerGroup();
 
