@@ -34,7 +34,7 @@
            margin: 20px;
        }
        /* Style for each chart div */
-       #temp, #precip, #wind {
+       #temp, #precip {
            width: 45%; /* Adjust the width as needed */
            border: 1px solid #ccc;
            padding: 10px;
@@ -49,8 +49,6 @@
            justify-content: space-between;
            margin: 20px;
        }
-       /* Style for each chart div */
-       
    </style> 
 
 </head>
@@ -69,7 +67,15 @@
   US capital cities or international locations. <br>
   Click the popups to learn more about about the weather in the selceted city.
   </h3>
-    
+    <!-- <label for="temperature">Temperature (°C):</label>
+    <select id="temperature" name="temperature">
+        <option value="">Select Temperature</option>
+        <script>
+          for (let temp = 5; temp <= 40; temp++) {
+            document.write(`<option value="${temp}">${temp}°C</option>`);
+          }
+        </script>
+    </select> -->
     <label for="min_temp">Min Temperature (°C):</label>
     <select id="min_temp" name="min_temp">
         <option value="">Select Temperature</option>
@@ -112,7 +118,6 @@
   <div class="chart-container">
     <div id="temp"></div>
     <div id="precip"></div>
-    <div id="wind"></div>
 </div>
 
   <div id="map"></div>
@@ -126,7 +131,7 @@
 
     document.getElementById('cityFilterForm').addEventListener('submit', function(event) {
       event.preventDefault();
-      
+      // const temperature = document.getElementById('temperature').value;
       const min_temp = document.getElementById('min_temp').value;
       const max_temp = document.getElementById('max_temp').value;
       const season = document.getElementById('season').value;
@@ -144,7 +149,9 @@
       fetch(`${route}?max_temp=${max_temp}&min_temp=${min_temp}&season=${season}`)
         .then(response => response.json())
         .then(data => {
-          // Input JSON into function
+          // Process the retrieved data (for example, display it on the page)
+          // const cityResults = document.getElementById('cityResults');
+          // cityResults.innerHTML += '<pre>' + JSON.stringify(data, null, 2) + '</pre>';
           load_map(data)
         })
         .catch(error => console.error('Error:', error)); 
