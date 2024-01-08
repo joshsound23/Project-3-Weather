@@ -40,14 +40,6 @@ def us_cities():
         }
 
     # Add optional filters based on user input for temperature and season
-<<<<<<< HEAD
-    if temperature:
-        query['avg_temp_c'] = float(temperature)
-    if season:
-        query['season'] = season
-    return get_random_cities(query, city_limit)
-
-=======
         # if temperature:
         if max_temp and min_temp:
             # query['avg_temp_c'] = float(temperature)
@@ -63,7 +55,6 @@ def us_cities():
     except Exception as e:
         app.logger.error(f"An error occurred: {str(e)}")
         return jsonify({'error': f'An internal server error occurred: {str(e)}'}), 500
->>>>>>> f71f4cd1bd614fc6ffbd91aa3fcd5b05132a40e7
     # Perform MongoDB query for U.S. cities, excluding the _id field
     #cursor = collection.find(query, {'_id': 0})
 
