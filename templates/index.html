@@ -1,33 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
 
-<head>
-  <meta charset="utf-8">
-  <title>Geo JSON</title>
+  <head>
+    <meta charset="UTF-8">
+    <title>Trip Planner</title>
 
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin="" />
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
-  <!-- Leaflet JavaScript code -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-    crossorigin=""></script>
+    <!-- Leaflet JavaScript code -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
-  <!-- D3 Library -->
-  <script src="https://d3js.org/d3.v7.min.js"></script>
 
-  <!-- Our CSS -->
-  <link rel="stylesheet" type="text/css" href="./static/css/style.css">
-</head>
 
-<body>
-  <!-- The div where we'll insert our map -->
-  <div id="map"></div>
+    <!-- D3 library -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
 
-  <!-- JavaScript file -->
-  <script type="text/javascript" src="./static/js/logic.js"></script>
-</body>
+    <!-- Our CSS  -->
+    <link rel="stylesheet" href="../static/css/style.css" />
+
+    <!-- Step 1 - Include the fusioncharts core library -->
+    <!-- https://www.fusioncharts.com/dev/getting-started/plain-javascript/your-first-chart-using-plain-javascript -->
+    <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+    <!-- Step 2 - Include the fusion theme -->
+    <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- https://stackoverflow.com/questions/27768325/side-by-side-placement-instead-of-vertically-placed-charts -->
+    <title>Charts Side by Side</title>
+    <style>
+        .chart-container {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px;
+        }
+        /* Style for each chart div */
+        #temp, #precip {
+            width: 45%; /* Adjust the width as needed */
+            border: 1px solid #ccc;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+    </style>
+
+  </head>
+
+  <body>
+    <div class="chart-container">
+      <div id="temp"></div>
+      <div id="precip"></div>
+  </div>
+
+    <div id="map"></div>
+
+    <!-- JavaScript file -->
+    <script type="text/javascript" src="../static/js/dashboard.js"></script>
+    
+
+
+  </body>
 
 </html>
