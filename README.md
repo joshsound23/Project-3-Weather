@@ -6,7 +6,7 @@ ______________________________________________________________
 
 In this project we will Create an interactive map that allows you to grab the average weather patterns of most major cities around the world.
 
-We choose this topic as a project because we thought it would be interesting to see what the average weather patterns across the globe looks like. As it stands now our code will grab a random set of locations based off of the users filter inputs. Once the user clicks the filter button 10 random locations will pop up that meet the users criteria. 
+We chose this topic as a project because we thought it would be interesting to see what the average weather patterns across the globe looks like. As it stands now our code will grab a random set of locations based off of the users filter inputs. Once the user clicks the filter button 10 random locations will pop up that meet the users criteria. 
 
 
 The data we use comes from Guillem Servera at https://www.kaggle.com/datasets/guillemservera/global-daily-climate-data. This data set includes 3 documents, 2 csv and 1 parquet file we have to read in and convert to csv. 
