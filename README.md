@@ -28,7 +28,7 @@ MongoDB Import:
 
 After all of that is done we start merging the data to make it easier to access using api calls. We do that using a mongodb python pipeline called mergeapp.py. 
 
-Location: (prework_folder\mergeapp.py.) 
+Location: (starter_files\mergeapp.py.) 
 
 In this merge file we combine cities.csv and daily_weather.csv. After these files are merged we can use our flask app to access our mongodb database.
 
