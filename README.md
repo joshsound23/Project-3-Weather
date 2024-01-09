@@ -43,9 +43,25 @@ Our java script code does two major things, 1. It places markers on our interact
  ## HTML Code
  Our html code works in tandem with the other two files. or html code is a little special in that is not only our front facing display but also contains code for feting the weather data from our json files and filters them. This helps with simplifying the amount of Java script code we have to write and makes accessing the information easier.
 ________________________________________________________________________
+## Steps to run code
+### Step One
+Go to the resources\cleaned_resources and unzip the weather_data.zip file. Then run these imports in the Terminal located in that folder.
+
+MongoDB Import:
+* mongoimport --type csv -d project3_weather -c weather_data --headerline --drop weather_data.csv
+* mongoimport --type csv -d project3_weather -c countries --headerline --drop countries.csv
+* mongoimport --type csv -d project3_weather -c cities --headerline --drop cities.csv
+
+### Step Two
+Go to prework_folder and run the mergeapp.py file. !!Note this may take some time, as these are fairly large data sets!!
+
+### Step Three
+Now you can Run the app.py file located at the front of the PROJECT-3-WEATHER folder.
+
+________________________________________________________________________
 ## Website Image
 
-![Alt text](image.png)
+![Alt text](image-1.png)
 ________________________________________________________________________
 
 
