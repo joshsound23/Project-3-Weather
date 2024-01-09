@@ -1,33 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <title>Geo JSON</title>
+  <meta charset="UTF-8">
+  <title>City Weather Filter</title>
+   <!-- Leaflet CSS -->
+   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin="" />
+   <!-- Leaflet JavaScript code -->
+   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 
-  <!-- Leaflet JavaScript code -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-    crossorigin=""></script>
 
-  <!-- D3 Library -->
-  <script src="https://d3js.org/d3.v7.min.js"></script>
 
-  <!-- Our CSS -->
-  <link rel="stylesheet" type="text/css" href="./static/css/style.css">
+   <!-- D3 library -->
+   <script src="https://d3js.org/d3.v7.min.js"></script>
+
+   <!-- Our CSS  -->
+   <link rel="stylesheet" href="../static/css/style.css" />
+
+   <!-- Step 1 - Include the fusioncharts core library -->
+   <!-- https://www.fusioncharts.com/dev/getting-started/plain-javascript/your-first-chart-using-plain-javascript -->
+   <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/fusioncharts.js"></script>
+   <!-- Step 2 - Include the fusion theme -->
+   <script type="text/javascript" src="https://cdn.fusioncharts.com/fusioncharts/latest/themes/fusioncharts.theme.fusion.js"></script>
+
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- https://stackoverflow.com/questions/27768325/side-by-side-placement-instead-of-vertically-placed-charts -->
+   <title>Charts Side by Side</title>
+   <style>
+       .chart-container {
+           display: flex;
+           justify-content: space-between;
+           margin: 20px;
+       }
+       /* Style for each chart div */
+       #temp, #precip, #wind {
+           width: 45%; /* Adjust the width as needed */
+           border: 1px solid #ccc;
+           padding: 10px;
+           box-sizing: border-box;
+       }
+   </style>
+
+   <title>images Side by Side</title>
+   <style>
+       .image-container {
+           display: flex;
+           justify-content: space-between;
+           margin: 20px;
+       }
+       /* Style for each chart div */
+       
+   </style> 
+
 </head>
-
 <body>
-  <!-- The div where we'll insert our map -->
+  <h1>City Weather Filter</h1>
+  <div class="image-container">
+    <img src="https://wallpapers.com/images/featured/travel-ibk7fgrvtvhs7qzg.jpg/" alt="Eiffel Tower View" width="500" height="300">
+    <img src="https://wallpapers.com/images/high/carmen-sandiego-1920-x-1080-yshe73j9qidkh4xz.jpg" alt="Carmen Sandiego" width="500" height="300">   
+    <img src="https://wallpapers.com/images/hd/world-map-earth-view-ol3ddalatungmj91.jpg" alt="World Map" width="700" height="300">
+5  </div>
+  <!-- <img src="https://wallpapers.com/images/featured/travel-ibk7fgrvtvhs7qzg.jpg/" alt="Eiffel Tower View" width="500" height="300"> -->
+  <form id="cityFilterForm">
+  <h3> Select a range of Temperatures between 5°C and 40°C.<br> 
+  Then select your preferance of season and location. <br> 
+  Hit the filter button and the map will return some travel suggestions based on<br>
+  US capital cities or international locations. <br>
+  Click the popups to learn more about about the weather in the selceted city.
+  </h3>
+    
+    <label for="min_temp">Min Temperature (°C):</label>
+    <select id="min_temp" name="min_temp">
+        <option value="">Select Temperature</option>
+        <!-- Dynamically generate temperature options -->
+        <script>
+          for (let temp = 5; temp <= 40; temp++) {
+            document.write(`<option value="${temp}">${temp}°C</option>`);
+          }
+        </script>
+    </select>
+    <label for="max_temp">Max Temperature (°C):</label>
+    <select id="max_temp" name="max_temp">
+        <option value="">Select Temperature</option>
+        <!-- Dynamically generate temperature options -->
+        <script>
+          for (let temp = 5; temp <= 40; temp++) {
+            document.write(`<option value="${temp}">${temp}°C</option>`);
+          }
+        </script>
+    </select>
+
+    <br><br>
+    <label for="season">Season:</label>
+    <select id="season" name="season">
+      <option value="">Select Season</option>
+      <option value="Spring">Spring</option>
+      <option value="Summer">Summer</option>
+      <option value="Autumn">Autumn</option>
+      <option value="Winter">Winter</option>
+    </select>
+    <br><br>
+    <label for="cityType">City Type:</label>
+    <select id="cityType" name="cityType">
+      <option value="us">US Cities</option>
+      <option value="international">International Cities</option>
+    </select>
+    <br><br>
+    <button type="submit">Filter Cities</button>
+  </form>
+  <div class="chart-container">
+    <div id="temp"></div>
+    <div id="precip"></div>
+    <div id="wind"></div>
+</div>
+
   <div id="map"></div>
 
-  <!-- JavaScript file -->
-  <script type="text/javascript" src="./static/js/logic.js"></script>
-</body>
+    <div id="cityResults"></div>
 
+    <!-- JavaScript file -->
+  <script type="text/javascript" src="../static/js/dashboard.js"></script>
+  <script>
+
+
+    document.getElementById('cityFilterForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const min_temp = document.getElementById('min_temp').value;
+      const max_temp = document.getElementById('max_temp').value;
+      const season = document.getElementById('season').value;
+      const cityType = document.getElementById('cityType').value;
+      
+      let route = '';
+      if (cityType === 'us') { 
+        route = '/us-cities';
+      } else if (cityType === 'international') {
+        route = '/international-cities';
+      }
+
+      
+      // fetch(`${route}?temperature=${temperature}&season=${season}`)
+      fetch(`${route}?max_temp=${max_temp}&min_temp=${min_temp}&season=${season}`)
+        .then(response => response.json())
+        .then(data => {
+          // Input JSON into function
+          load_map(data)
+        })
+        .catch(error => console.error('Error:', error)); 
+    });
+    
+  </script>
+  
+</body>
 </html>
+
+
+
+
