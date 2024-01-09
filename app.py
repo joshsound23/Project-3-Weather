@@ -11,8 +11,8 @@ def index():
 
 # Connect to your MongoDB
 client = MongoClient('mongodb://localhost:27017/')
-db = client['project3_weather']  # Replace 'your_database_name' with your database name
-collection = db['merged_data']  # Replace 'your_collection_name' with your collection name
+db = client['project3_weather']  
+collection = db['merged_data']  
 
 def get_random_cities(query, city_limit):
     pipeline = [
@@ -55,13 +55,7 @@ def us_cities():
     except Exception as e:
         app.logger.error(f"An error occurred: {str(e)}")
         return jsonify({'error': f'An internal server error occurred: {str(e)}'}), 500
-    # Perform MongoDB query for U.S. cities, excluding the _id field
-    #cursor = collection.find(query, {'_id': 0})
-
-    # Convert MongoDB cursor to a JSON-serializable list of dictionaries using bson.json_util
-    #us_cities_filtered = json_util.dumps(list(cursor))
-
-    #return us_cities_filtered
+    
 
 @app.route('/international-cities', methods=['GET'])
 def international_cities():
@@ -88,17 +82,7 @@ def international_cities():
         query['season'] = season
     return get_random_cities(query, city_limit)
 
-    # Perform MongoDB query for international cities, excluding the _id field
-    #cursor = collection.find(query, {'_id': 0})
-
-    # Convert MongoDB cursor to a JSON-serializable list of dictionaries using bson.json_util
-    #international_cities_filtered = json_util.dumps(list(cursor))
-
-    #return international_cities_filtered
-
-# @app.route('/dashboard')
-# def dashboard():
-#     return render_template('dashboard.html')
+ 
 
 if __name__ == '__main__':
     app.run(debug=True)
