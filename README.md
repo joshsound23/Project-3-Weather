@@ -1,5 +1,25 @@
 # Project-3-Weather Mapping
 
+## Table of Contents
+
+- [Project Outline](https://github.com/joshsound23/Project-3-Weather?tab=readme-ov-file#project-outline)
+
+- [Cleaning Data](https://github.com/joshsound23/Project-3-Weather?tab=readme-ov-file#cleaning-the-data)
+
+- [Java Script](https://github.com/joshsound23/Project-3-Weather?tab=readme-ov-file#java-script)
+
+- [HTML Code](https://github.com/joshsound23/Project-3-Weather?tab=readme-ov-file#html-code)
+
+- [Steps to run Code](https://github.com/joshsound23/Project-3-Weather?tab=readme-ov-file#steps-to-run-code)
+
+- [Images](https://github.com/joshsound23/Project-3-Weather?tab=readme-ov-file#website-image)
+
+- [Sources](https://github.com/joshsound23/Project-3-Weather?tab=readme-ov-file#data-source)
+
+- [Collaborators](https://github.com/joshsound23/Project-3-Weather?tab=readme-ov-file#collaborators)
+
+
+ 
 ______________________________________________________________
 
 # Project Outline:
